@@ -41,7 +41,7 @@
 
 #define PEN_RELEASE		0
 #define PEN_DOWN 		1
-#define TOUCH_INTERVAL		35
+#define TOUCH_INTERVAL		25
 
 struct tegra_touch_driver_data
 {

@@ -509,7 +509,7 @@ NvOdmPeripheralGetBoardInfo(
 
     // Match not found
     pBoardInfo = NULL;
-    return NV_FALSE;
+    return NV_TRUE;
 }
 
 // This will compare the peripheral GUID against a list of known-bad GUIDs

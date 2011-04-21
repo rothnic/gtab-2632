@@ -350,6 +350,8 @@ void NvRmPwmClose(NvRmPwmHandle hPwm)
 #define MAX_DUTY_CYCLE 255
 #define PWM_FREQ_FACTOR 256
 
+#define HACK_LCD_PWM_MCHI   (1)
+
 NvError NvRmPwmConfig(
     NvRmPwmHandle hPwm,
     NvRmPwmOutputId OutputId,  
