@@ -151,16 +151,20 @@ static const NvOdmGpioPinInfo s_WakeFromKeyBoard[] = {
 
 // Gpio based keypad
 static const NvOdmGpioPinKeyInfo s_GpioPinKeyInfo[] = {
-    //{KEY_MENU, 10, NV_TRUE},
-    //{KEY_HOME, 10, NV_TRUE},
-    //{KEY_BACK, 10, NV_TRUE},
-    //{KEY_F3, 10, NV_TRUE},
-    //{KEY_F4, 10, NV_TRUE},
-    //{KEY_MENU, 10, NV_TRUE},
-	//{KEY_VOLUMEUP, 10, NV_TRUE},
+#if defined(CONFIG_7373C_V20)
 	{KEY_VOLUMEUP, 10, NV_TRUE},
 	{KEY_VOLUMEDOWN, 10, NV_TRUE},
 	{KEY_F4, 10, NV_TRUE},
+#elif defined(CONFIG_7379Y_V11)
+	{KEY_VOLUMEUP, 10, NV_TRUE},
+	{KEY_VOLUMEDOWN, 10, NV_TRUE},
+	{KEY_F4, 10, NV_TRUE},
+	{KEY_BACK, 10, NV_TRUE}, 
+#else
+	{KEY_VOLUMEUP, 10, NV_TRUE},
+	{KEY_VOLUMEDOWN, 10, NV_TRUE},
+	{KEY_F4, 10, NV_TRUE},
+#endif
 };
 
 
