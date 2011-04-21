@@ -1335,6 +1335,12 @@ static struct platform_device gpio_led_platform_device = {
 };
 #endif
 
+#ifdef CONFIG_SMBA1006_BATTERY_LED
+static struct platform_device smba1006_battery_led_platform_device = {
+	.name = "smba1006_battery_led",
+	.id = -1,
+};
+#endif
 
 static struct platform_device *nvodm_devices[] __initdata = {
 #ifdef CONFIG_RTC_DRV_TEGRA
@@ -1929,6 +1935,10 @@ void __init tegra_setup_nvodm(bool standard_i2c, bool standard_spi)
 	
 	#ifdef CONFIG_LEDS_GPIO
 	(void) platform_device_register(&gpio_led_platform_device);
+	#endif
+	
+	#ifdef CONFIG_SMBA1006_BATTERY_LED
+	(void) platform_device_register(&smba1006_battery_led_platform_device);
 	#endif
 
 	tegra_setup_suspend();
