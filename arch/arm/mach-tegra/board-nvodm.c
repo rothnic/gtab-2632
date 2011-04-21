@@ -1363,6 +1363,13 @@ static struct platform_device smba1006_battery_led_platform_device = {
 };
 #endif
 
+#ifdef CONFIG_SMB_WIFI_LED
+static struct platform_device wifi_led_platform_device = {
+	.name = "WIFI_LED", 
+	.id = -1, 
+};
+#endif
+
 static struct platform_device *nvodm_devices[] __initdata = {
 #ifdef CONFIG_RTC_DRV_TEGRA
 	&tegra_rtc_device,

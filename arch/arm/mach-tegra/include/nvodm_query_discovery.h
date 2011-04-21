@@ -375,6 +375,12 @@ NvOdmPeripheralGetBoardInfo(
     NvU16 BoardId,
     NvOdmBoardInfo* pBoardInfo);
 
+  /**
+   * Control the wifi LED interface. 
+   *
+   */
+void Nv_WIFI_LED_Control(unsigned int enable);
+
 #if defined(__cplusplus)
 }
 #endif
