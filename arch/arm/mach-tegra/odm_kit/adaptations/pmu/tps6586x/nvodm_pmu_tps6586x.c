@@ -27,7 +27,6 @@
 
 #include <nvrm_gpio.h>
 
-
 #include "nvodm_query_discovery.h"
 #include "nvodm_query.h"
 #include "nvodm_query_gpio.h"
@@ -148,7 +147,7 @@ static NvU32 TPS6586xPmuVoltageSetVLDO4(const NvU32 bits);
 /* Martin.Chi */
 static void Resume_Isr(void *arg);
 extern void Tps6586x_Resume_Isr_Register(void);
-NvOdmPmuDeviceHandle G_hdev;
+NvOdmPmuDeviceHandle G_hdev=0;
 
 /* FIXME: Change getVoltage/setVoltage according to your fuse */
 static const TPS6586xPmuSupplyInfo tps6586xSupplyInfoTable[] =
@@ -1396,6 +1395,8 @@ void DumpTps6586x(NvOdmPmuDeviceHandle hDevice)
 }
 #endif
 
+NvOdmPmuDeviceHandle WIFI_hDevice=NULL;
+
 void Nv_WIFI_LED_Control(unsigned int enable)
 {
 	if(WIFI_hDevice==NULL) return;
@@ -1438,6 +1439,10 @@ NvBool Tps6586xSetup(NvOdmPmuDeviceHandle hDevice)
                            NvOdmPeripheralGetGuid(PMUGUID);
 
     NV_ASSERT(hDevice);
+	
+#if (defined(CONFIG_7373C_V20))
+	WIFI_hDevice = hDevice;
+#endif
 
     hPmu = (NvOdmPmuDeviceTPS *)NvOdmOsAlloc(sizeof(NvOdmPmuDeviceTPS));
     if (hPmu == NULL)
